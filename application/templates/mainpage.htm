@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Welcome</title>
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles/test.css')}}">
+</head>
+<body>
+<style>
+body
+{
+  background-image: url('{{ url_for('static', filename='styles/620fd215f344f16633f1aafc_hero_2.jpeg')}}');
+  backdrop-filter: blur(5px);
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+  color:whitesmoke;
+}
+</style>
+<h1>Welcome to our Portal!</h1>
+<span><h4>The one stop solution for all insights</h4></span><br>
+
+<form action="/mainp"style=" background-color:transparent;width:400px; height:150px">
+	<button type="button" style="width:300px">
+		<a href="{{url_for('clielog')}}"  style="text-decoration: none">
+			<font color="#FFFFFF">Executives Login</font></a></button>
+	<br>
+	<button type="button" style="width:300px">
+		<a href="{{url_for('custlog')}}"  style="text-decoration: none">
+			<font color="#FFFFFF">Sales Login</font></a></button>
+</form>
+</body>
+
+</html>

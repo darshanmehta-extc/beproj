@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sales Login</title>
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles/test.css')}}">
+</head>
+<body>
+<style>
+body {
+  background-image: url('{{ url_for('static', filename='styles/620fd215f344f16633f1aafc_hero_2.jpeg')}}');
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover
+}
+</style>
+<div class="container" id="container">
+	<div class="form-container sign-up-container">
+		<form action="/custsign" method="post" id="signup-form">
+			<h1>Create Account</h1>
+			<input type="text" placeholder="Name" id="name" name="n1"/>
+			<input type="email" placeholder="Email" id="user" name="user" required />
+			<input type="password" placeholder="Password (Minimum 6 characters)" name="psw" required id="pasd" />
+			<script>
+	        function showpass() {
+	        	var x = document.getElementById("pasd");
+	        	if (x.type === "password") {
+	        		x.type="text";
+	        		} else {
+	        		x.type = "password";}}  
+	        </script>
+			 <div class="c1">
+				 <input  type="checkbox" onclick="showpass()">
+				 <div class="sp">Show Password</div>
+			</div>
+			<br>
+			<button type="submit">Sign Up</button>
+		</form>
+	</div>
+	<div class="form-container sign-in-container">
+		<form action="/custlog" method="post">
+			<h1>Sales</h1>
+			<h1>Sign in</h1>
+			 {% block content %}
+
+            			{% for message in get_flashed_messages() %}
+
+            			<div class="alert alert-warning" style="color:red">
+                			<h3 > {{message}} </h3>
+            			</div>
+            			{% endfor %}
+            			{% block page_content %}
+            			{% endblock %}
+
+        		{% endblock %}
+			<input type="email" placeholder="Email" name="username" required />
+			<input type="password" placeholder="Password" name="psw" id="pasw" required />
+			<script>
+	        function showpass2() {
+	        	var y = document.getElementById("pasw");
+	        	if (y.type === "password") {
+	        		y.type="text";
+	        		} else {
+	        		y.type = "password";}}  
+	        </script> 
+			<div class="c1">
+	        		<input  type="checkbox" onclick="showpass2()">
+					<div class="sp">Show Password</div>
+			</div>
+			
+			<a href="{{url_for('forgotps')}}">Forgot your password?</a>
+			<button type="submit">Sign In</button>
+		</form>
+	</div>
+	<div class="overlay-container">
+		<div class="overlay">
+			<div class="overlay-panel overlay-left">
+				<h1>Welcome Back!</h1>
+				<p>To keep connected with us please login with your credentials</p>
+				<button class="ghost" id="signIn">Sign In</button>
+			</div>
+			<div class="overlay-panel overlay-right">
+				<h1>Not Yet Registered?</h1>
+				<p>Enter your details and start your journey with us</p>
+				<button class="ghost" id="signUp">Sign Up</button>
+			</div>
+		</div>
+	</div>
+</div>
+<script>
+const signUpButton = document.getElementById('signUp');
+const signInButton = document.getElementById('signIn');
+const container = document.getElementById('container');
+
+signUpButton.addEventListener('click', () => {
+	container.classList.add("right-panel-active");
+});
+
+signInButton.addEventListener('click', () => {
+	container.classList.remove("right-panel-active");
+});
+</script>
+
+</body>
+
+</html>
